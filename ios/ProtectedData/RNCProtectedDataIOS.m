@@ -5,12 +5,12 @@
 //  Created by Gboyega Dada on 27/08/2020.
 //
 
-#import "RNCProtectedData.h"
+#import "RNCProtectedDataIOS.h"
 
 #import <React/RCTBridge.h>
 #import <React/RCTEventEmitter.h>
 
-@implementation RNCProtectedData
+@implementation RNCProtectedDataIOS
 {
     bool hasListeners;
 }
@@ -27,7 +27,25 @@ RCT_EXPORT_MODULE();
   return dispatch_get_main_queue();
 }
 
-#pragma mark - RCTEventEmitter
+#pragma mark Singleton Methods
+
++ (id)getIntance {
+    static RNCProtectedDataIOS *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[self alloc] init];
+    });
+    return instance;
+}
+
+- (id)init {
+  if (self = [super init]) {
+      hasListeners = NO;
+  }
+  return self;
+}
+
+#pragma mark - Event Emitter
 
 - (NSArray<NSString *> *)supportedEvents
 {

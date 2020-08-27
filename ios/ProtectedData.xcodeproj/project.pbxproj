@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		2608D42824F7A4A000865E81 /* RNCProtectedData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNCProtectedData.h; sourceTree = "<group>"; };
-		2608D42A24F7A58C00865E81 /* RNCProtectedData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNCProtectedData.m; sourceTree = "<group>"; };
+		2608D42824F7A4A000865E81 /* RNCProtectedDataIOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNCProtectedDataIOS.h; sourceTree = "<group>"; };
+		2608D42A24F7A58C00865E81 /* RNCProtectedDataIOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNCProtectedDataIOS.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -22,8 +22,8 @@
 		2608D42724F7A41100865E81 /* ProtectedData */ = {
 			isa = PBXGroup;
 			children = (
-				2608D42824F7A4A000865E81 /* RNCProtectedData.h */,
-				2608D42A24F7A58C00865E81 /* RNCProtectedData.m */,
+				2608D42824F7A4A000865E81 /* RNCProtectedDataIOS.h */,
+				2608D42A24F7A58C00865E81 /* RNCProtectedDataIOS.m */,
 			);
 			path = ProtectedData;
 			sourceTree = "<group>";

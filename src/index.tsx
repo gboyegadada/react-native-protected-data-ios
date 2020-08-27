@@ -8,7 +8,7 @@ export * from './ProtectedData.d'
 console.log(React.version)
 
 // Initialize the native event emitter
-const nativeEventEmitter = new NativeEventEmitter(NativeModules.RNCProtectedData);
+const nativeEventEmitter = new NativeEventEmitter(NativeModules.RNCProtectedDataIOS);
 nativeEventEmitter.addListener('ApplicationProtectedDataEvent', (e: ProtectedDataEvent) => {
   console.log('GBOYEGA NATIVE EVENT:', e)
 

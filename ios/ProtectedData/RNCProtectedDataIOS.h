@@ -7,5 +7,5 @@
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventEmitter.h>
 
-@interface RNCProtectedData : RCTEventEmitter <RCTBridgeModule>
+@interface RNCProtectedDataIOS : RCTEventEmitter <RCTBridgeModule>
 @end
