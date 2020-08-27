@@ -1,0 +1,50 @@
+{
+  "name": "react-native-protected-data",
+  "version": "1.0.0",
+  "description": "Subscribe to ProtectedWillBeAvailable e.t.c",
+  "main": "src/index.tsx",
+  "author": "Gboyega Dada <boyega@gmail.com>",
+  "homepage": "https://github.com/gboyegadada/react-native-protected-data#readme",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@react-native-community/bob": "^0.16.2",
+    "@types/react-native": "^0.63.10",
+    "prettier": "^2.1.1",
+    "react": "^16.13.1",
+    "react-native": "^0.63.2"
+  },
+  "react-native": "src/index.tsx",
+  "types": "lib/typescript/src/index.d.ts",
+  "scripts": {
+    "prepare": "bob build"
+  },
+  "keywords": [
+    "react-native",
+    "react native",
+    "protected-data",
+    "protected data",
+    "application protected data"
+  ],
+  "files": [
+    "src",
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
+  "@react-native-community/bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "typescript"
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ],
+  "dependencies": {
+    "fbemitter": "^2.1.1"
+  }
+}
