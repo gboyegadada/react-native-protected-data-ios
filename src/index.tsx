@@ -1,12 +1,17 @@
-import { NativeEventEmitter, EventSubscription, EventEmitter } from 'react-native'
-import { NativeProtectedData } from './NativeProtectedData';
+import * as React from 'react'
+import { NativeEventEmitter, NativeModules } from 'react-native'
+import { EventEmitter, EventSubscription } from 'fbemitter'
 import { ProtectedDataEvent, ProtectedDataJSEventName, ProtectedDataListener } from './ProtectedData';
 
 export * from './ProtectedData.d'
 
+console.log(React.version)
+
 // Initialize the native event emitter
-const nativeEventEmitter = new NativeEventEmitter(NativeProtectedData);
+const nativeEventEmitter = new NativeEventEmitter(NativeModules.RNCProtectedData);
 nativeEventEmitter.addListener('ApplicationProtectedDataEvent', (e: ProtectedDataEvent) => {
+  console.log('GBOYEGA NATIVE EVENT:', e)
+
   ProtectedData.emit(e)
 })
 
