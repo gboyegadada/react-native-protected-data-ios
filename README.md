@@ -2,22 +2,22 @@
 ```
 - (void)applicationProtectedDataWillBecomeUnavailable:(UIApplication *)application
 {
-  NSLog(@"PROTECTED DATA: WILL BECOME UNAVAILABLE");
+  [[RNCProtectedDataIOS getInstance] eventReceived:RNCApplicationProtectedDataWillBecomeUnavailable];
 }
 
 - (void)applicationProtectedDataDidBecomeUnavailable:(UIApplication *)application
 {
-  NSLog(@"PROTECTED DATA: DID BECOME UNAVAILABLE");
+  [[RNCProtectedDataIOS getInstance] eventReceived:RNCApplicationProtectedDataDidBecomeUnavailable];
 }
 
 - (void)applicationProtectedDataWillBecomeAvailable:(UIApplication *)application
 {
-  NSLog(@"PROTECTED DATA: WILL BECOME AVAILABLE");
+  [[RNCProtectedDataIOS getInstance] eventReceived:RNCApplicationProtectedDataWillBecomeAvailable];
 }
 
 - (void)applicationProtectedDataDidBecomeAvailable:(UIApplication *)application
 {
-  NSLog(@"PROTECTED DATA: DID BECOME AVAILABLE");
+  [[RNCProtectedDataIOS getInstance] eventReceived:RNCApplicationProtectedDataDidBecomeAvailable];
 }
 ```
 

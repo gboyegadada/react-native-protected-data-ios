@@ -26,16 +26,16 @@ export class ProtectedData {
  static emit(e: ProtectedDataEvent): void {
   
   switch(e.name) {
-    case "applicationProtectedDataWillBecomeAvailable":
+    case "UIApplicationProtectedDataWillBecomeAvailable":
       eventEmitter.emit('willBecomeAvailable', e)
       break
-    case "applicationProtectedDataDidBecomeAvailable":
+    case "UIApplicationProtectedDataDidBecomeAvailable":
       eventEmitter.emit('didBecomeAvailable', e)
       break
-    case "applicationProtectedDataWillBecomeUnavailable":
+    case "UIApplicationProtectedDataWillBecomeUnavailable":
       eventEmitter.emit('willBecomeUnavailable', e)
       break
-    case "applicationProtectedDataDidBecomeUnavailable":
+    case "UIApplicationProtectedDataDidBecomeUnavailable":
       eventEmitter.emit('didBecomeUnavailable', e)
       break
   }
@@ -44,7 +44,7 @@ export class ProtectedData {
  /**
   * Add an event handler that is fired when native event is received.
   */
- static addChangeListener(name: ProtectedDataJSEventName, listener: ProtectedDataListener): EventSubscription {
+ static addListener(name: ProtectedDataJSEventName, listener: ProtectedDataListener): EventSubscription {
    return eventEmitter.addListener(name, listener);
  }
 

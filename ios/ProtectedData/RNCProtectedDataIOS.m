@@ -10,6 +10,15 @@
 #import <React/RCTBridge.h>
 #import <React/RCTEventEmitter.h>
 
+
+static NSString *const RNCApplicationProtectedDataWillBecomeUnavailable = @"UIApplicationProtectedDataWillBecomeUnavailable";
+
+static NSString *const RNCApplicationProtectedDataDidBecomeUnavailable = @"UIApplicationProtectedDataDidBecomeUnavailable";
+
+static NSString *const RNCApplicationProtectedDataWillBecomeAvailable = @"UIApplicationProtectedDataWillBecomeAvailable";
+
+static NSString *const RNCApplicationProtectedDataDidBecomeAvailable = @"UIApplicationProtectedDataDidBecomeAvailable";
+
 @implementation RNCProtectedDataIOS
 {
     bool hasListeners;
@@ -29,7 +38,7 @@ RCT_EXPORT_MODULE();
 
 #pragma mark Singleton Methods
 
-+ (id)getIntance {
++ (id)getInstance {
     static RNCProtectedDataIOS *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -64,10 +73,8 @@ RCT_EXPORT_MODULE();
     // Remove upstream listeners, stop unnecessary background tasks
 }
 
-- (void)eventReceived:(NSNotification *)notification
+- (void)eventReceived:(NSString *)eventName
 {
-    NSString *eventName = notification.userInfo[@"name"];
-    
     if (hasListeners) {
         [self sendEventWithName:@"ApplicationProtectedDataEvent" body:@{@"name": eventName}];
     }
