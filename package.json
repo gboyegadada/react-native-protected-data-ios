@@ -1,10 +1,10 @@
 {
-  "name": "react-native-protected-data",
-  "version": "1.0.0",
+  "name": "react-native-protected-data-ios",
+  "version": "0.0.1",
   "description": "Subscribe to ProtectedWillBeAvailable e.t.c",
   "main": "src/index.tsx",
   "author": "Gboyega Dada <boyega@gmail.com>",
-  "homepage": "https://github.com/gboyegadada/react-native-protected-data#readme",
+  "homepage": "https://github.com/gboyegadada/react-native-protected-data-ios#readme",
   "license": "MIT",
   "private": false,
   "sideEffects": false,
@@ -27,7 +27,8 @@
     "react native",
     "protected-data",
     "protected data",
-    "application protected data"
+    "application protected data",
+    "ios"
   ],
   "files": [
     "src",
