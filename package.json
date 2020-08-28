@@ -1,6 +1,6 @@
 {
   "name": "react-native-protected-data-ios",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Subscribe to ProtectedWillBeAvailable e.t.c",
   "main": "src/index.tsx",
   "author": "Gboyega Dada <boyega@gmail.com>",
@@ -37,10 +37,11 @@
     "/android",
     "!/android/build",
     "/ios",
-    "!/ios/ProtectedDataIOS/ProtectedDataIOS.xcodeproj",
+    "!/ios/ProtectedDataIOS.xcworkspace",
     "/*.podspec",
-    "/ios/Podfile",
-    "/ios/Podfile.lock",
+    "!/ios/Podfile",
+    "!/ios/Podfile.lock",
+    "!/ios/Pods",
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__"
