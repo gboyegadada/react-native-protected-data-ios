@@ -10,11 +10,6 @@
 #import <React/RCTBridge.h>
 #import <React/RCTEventEmitter.h>
 
-
-static NSString *const RNCApplicationProtectedDataWillBecomeUnavailable = @"UIApplicationProtectedDataWillBecomeUnavailable";
-
-static NSString *const RNCApplicationProtectedDataDidBecomeAvailable = @"UIApplicationProtectedDataDidBecomeAvailable";
-
 @implementation ProtectedDataIOS
 
 RCT_EXPORT_MODULE();
@@ -48,12 +43,12 @@ RCT_EXPORT_MODULE();
 {
     if([notification.name isEqualToString:UIApplicationProtectedDataWillBecomeUnavailable])
     {
-        [self sendEventWithName:@"ApplicationProtectedDataEvent" body:@{@"name": RNCApplicationProtectedDataWillBecomeUnavailable}];
+        [self sendEventWithName:UIApplicationProtectedDataWillBecomeUnavailable body:@{@"name": UIApplicationProtectedDataWillBecomeUnavailable}];
     }
     
     else if([notification.name isEqualToString:UIApplicationProtectedDataDidBecomeAvailable])
     {
-        [self sendEventWithName:@"ApplicationProtectedDataEvent" body:@{@"name": RNCApplicationProtectedDataDidBecomeAvailable}];
+        [self sendEventWithName:UIApplicationProtectedDataDidBecomeAvailable body:@{@"name": UIApplicationProtectedDataDidBecomeAvailable}];
     }
 }
 
