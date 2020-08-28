@@ -1,6 +1,6 @@
 {
   "name": "react-native-protected-data-ios",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Subscribe to ProtectedWillBeAvailable e.t.c",
   "main": "src/index.tsx",
   "author": "Gboyega Dada <boyega@gmail.com>",
@@ -18,7 +18,7 @@
     "react-native": "^0.63.2"
   },
   "react-native": "src/index.tsx",
-  "types": "lib/typescript/src/index.d.ts",
+  "types": "lib/typescript/index.d.ts",
   "scripts": {
     "prepare": "npx bob build"
   },

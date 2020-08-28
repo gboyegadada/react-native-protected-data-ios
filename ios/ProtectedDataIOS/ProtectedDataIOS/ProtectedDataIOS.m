@@ -13,103 +13,48 @@
 
 static NSString *const RNCApplicationProtectedDataWillBecomeUnavailable = @"UIApplicationProtectedDataWillBecomeUnavailable";
 
-static NSString *const RNCApplicationProtectedDataDidBecomeUnavailable = @"UIApplicationProtectedDataDidBecomeUnavailable";
-
-static NSString *const RNCApplicationProtectedDataWillBecomeAvailable = @"UIApplicationProtectedDataWillBecomeAvailable";
-
 static NSString *const RNCApplicationProtectedDataDidBecomeAvailable = @"UIApplicationProtectedDataDidBecomeAvailable";
 
 @implementation ProtectedDataIOS
-{
-    bool hasListeners;
-}
 
 RCT_EXPORT_MODULE();
-
-+ (BOOL)requiresMainQueueSetup
-{
-  return YES;
-}
-
-- (dispatch_queue_t)methodQueue
-{
-  return dispatch_get_main_queue();
-}
-
-#pragma mark Singleton Methods
-
-+ (id)getInstance {
-    static ProtectedDataIOS *instance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[self alloc] init];
-    });
-    return instance;
-}
-
-- (id)init {
-  if (self = [super init]) {
-      hasListeners = NO;
-  }
-  return self;
-}
 
 #pragma mark - Event Emitter
 
 - (NSArray<NSString *> *)supportedEvents
 {
-  return @[@"ApplicationProtectedDataEvent"];
+  return @[
+      UIApplicationProtectedDataDidBecomeAvailable,
+      UIApplicationProtectedDataWillBecomeUnavailable
+  ];
 }
 
--(void)startObserving {
-    if (@available(iOS 13.0, *)) {
-      [[NSNotificationCenter defaultCenter] addObserver:self
-                                               selector:@selector(willBecomeAvailable)
-                                                   name:UIApplicationProtectedDataDidBecomeAvailable
-                                                 object:nil];
-      
-      [[NSNotificationCenter defaultCenter] addObserver:self
-                                               selector:@selector(willBecomeUnavailable)
-                                                   name:UIApplicationProtectedDataWillBecomeUnavailable
-                                                 object:nil];
-
-      [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(didBecomeAvailable)
-                                                     name:UIApplicationProtectedDataDidBecomeAvailable
-                                                   object:nil];
-    }
+-(void)startObserving
+{
+    for (NSString *event in [self supportedEvents]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                selector:@selector(handleNotification:)
+                                                    name:event
+                                                  object:nil];
+      }
 }
 
 - (void)stopObserving
 {
-  if (@available(iOS 13.0, *)) {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIApplicationProtectedDataDidBecomeAvailable
-                                                  object:nil];
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                      name:UIApplicationProtectedDataWillBecomeUnavailable
-                                                    object:nil];
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                  name:UIApplicationProtectedDataDidBecomeAvailable
-                                                object:nil];
-  }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)willBecomeAvailable
+- (void)handleNotification:(NSNotification *)notification
 {
-    [self sendEventWithName:@"ApplicationProtectedDataEvent" body:@{@"name": RNCApplicationProtectedDataWillBecomeAvailable}];
-}
-
-- (void)willBecomeUnavailable
-{
-    [self sendEventWithName:@"ApplicationProtectedDataEvent" body:@{@"name": RNCApplicationProtectedDataWillBecomeUnavailable}];
-}
-
-- (void)didBecomeAvailable
-{
-    [self sendEventWithName:@"ApplicationProtectedDataEvent" body:@{@"name": RNCApplicationProtectedDataDidBecomeAvailable}];
+    if([notification.name isEqualToString:UIApplicationProtectedDataWillBecomeUnavailable])
+    {
+        [self sendEventWithName:@"ApplicationProtectedDataEvent" body:@{@"name": RNCApplicationProtectedDataWillBecomeUnavailable}];
+    }
+    
+    else if([notification.name isEqualToString:UIApplicationProtectedDataDidBecomeAvailable])
+    {
+        [self sendEventWithName:@"ApplicationProtectedDataEvent" body:@{@"name": RNCApplicationProtectedDataDidBecomeAvailable}];
+    }
 }
 
 @end

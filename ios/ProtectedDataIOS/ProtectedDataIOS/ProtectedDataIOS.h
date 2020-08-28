@@ -10,13 +10,8 @@
 
 
 static NSString *const RNCApplicationProtectedDataWillBecomeUnavailable;
-static NSString *const RNCApplicationProtectedDataDidBecomeUnavailable;
-static NSString *const RNCApplicationProtectedDataWillBecomeAvailable;
 static NSString *const RNCApplicationProtectedDataDidBecomeAvailable;
 
 @interface ProtectedDataIOS : RCTEventEmitter <RCTBridgeModule>
-    + (id)getInstance;
-    - (void)willBecomeUnavailable;
-    - (void)willBecomeAvailable;
-    - (void)didBecomeAvailable;
+    - (void)handleNotification:(NSNotification *)notification;
 @end

@@ -9,11 +9,7 @@ console.log(React.version)
 
 // Initialize the native event emitter
 const nativeEventEmitter = new NativeEventEmitter(NativeModules.ProtectedDataIOS);
-nativeEventEmitter.addListener('ApplicationProtectedDataEvent', (e: ProtectedDataEvent) => {
-  console.log('GBOYEGA NATIVE EVENT:', e)
-
-  ProtectedDataIOS.emit(e)
-})
+nativeEventEmitter.addListener('ApplicationProtectedDataEvent', (e: ProtectedDataEvent) => ProtectedDataIOS.emit(e))
 
 // Initialize the user-facing event emitter
 const eventEmitter = new EventEmitter()
@@ -26,17 +22,11 @@ export class ProtectedDataIOS {
  static emit(e: ProtectedDataEvent): void {
   
   switch(e.name) {
-    case "UIApplicationProtectedDataWillBecomeAvailable":
-      eventEmitter.emit('willBecomeAvailable', e)
-      break
     case "UIApplicationProtectedDataDidBecomeAvailable":
       eventEmitter.emit('didBecomeAvailable', e)
       break
     case "UIApplicationProtectedDataWillBecomeUnavailable":
       eventEmitter.emit('willBecomeUnavailable', e)
-      break
-    case "UIApplicationProtectedDataDidBecomeUnavailable":
-      eventEmitter.emit('didBecomeUnavailable', e)
       break
   }
  }
