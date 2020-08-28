@@ -1,6 +1,6 @@
 {
   "name": "react-native-protected-data-ios",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Subscribe to ProtectedWillBeAvailable e.t.c",
   "main": "src/index.tsx",
   "author": "Gboyega Dada <boyega@gmail.com>",
@@ -20,7 +20,7 @@
   "react-native": "src/index.tsx",
   "types": "lib/typescript/src/index.d.ts",
   "scripts": {
-    "prepare": "bob build"
+    "prepare": "npx bob build"
   },
   "keywords": [
     "react-native",
@@ -31,8 +31,13 @@
     "ios"
   ],
   "files": [
-    "src",
-    "lib",
+    "!/example",
+    "/lib",
+    "/src",
+    "/android",
+    "!/android/build",
+    "/ios",
+    "/*.podspec",
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__"
