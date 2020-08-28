@@ -37,7 +37,10 @@
     "/android",
     "!/android/build",
     "/ios",
+    "!/ios/ProtectedDataIOS/ProtectedDataIOS.xcodeproj",
     "/*.podspec",
+    "/ios/Podfile",
+    "/ios/Podfile.lock",
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__"
