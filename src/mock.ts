@@ -4,7 +4,7 @@ interface FakeEventSubscription {
   remove: () => void;
 }
 
-export class ProtectedData {
+export class ProtectedDataIOS {
 
   static emit(e: ProtectedDataEvent): void {}
 
