@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { NativeEventEmitter, NativeModules } from 'react-native'
-import { EventSubscription } from 'fbemitter'
+import { NativeEventEmitter, EmitterSubscription, NativeModules } from 'react-native'
 import { ProtectedDataJSEventName, ProtectedDataListener } from './ProtectedData';
 
 export * from './ProtectedData.d'
@@ -20,7 +19,7 @@ export class ProtectedDataIOS {
  /**
   * Add an event handler that is fired when native event is received.
   */
- static addListener(name: ProtectedDataJSEventName, listener: ProtectedDataListener): EventSubscription {
+ static addListener(name: ProtectedDataJSEventName, listener: ProtectedDataListener): EmitterSubscription {
    return nativeEventEmitter.addListener(this.mapped[name], listener)
  }
 
