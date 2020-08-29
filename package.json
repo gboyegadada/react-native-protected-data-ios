@@ -1,6 +1,6 @@
 {
   "name": "react-native-protected-data-ios",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Subscribe to ProtectedWillBeAvailable e.t.c",
   "main": "src/index.tsx",
   "author": "Gboyega Dada <boyega@gmail.com>",
